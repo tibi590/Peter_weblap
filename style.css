@@ -1,4 +1,9 @@
 body {
+<<<<<<< HEAD
     background: brown;
     text-align: center;
+=======
+    background: red;
+    margin-left: 50px;
+>>>>>>> 7372c2e78f631de15c4af0dfe6a8a246db5b49e5
 }
