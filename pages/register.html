@@ -8,6 +8,23 @@
         <script src="../main.js"></script>
     </head>
     <body>
-        <h1>SEX REGISTER</h1>
+        <div class="welcome_frame">
+            <div class="container_login">
+                <label for="input_name">Username:</label> <br>
+                <input type="text" id="input_name"> <br>
+                <label for="input_pass">Password:</label> <br>
+                <input type="password" id="input_pass"> <br>
+                <label for="input_pass_confirm">Confirm password:</label> <br>
+                <input type="password" id="input_pass_confirm"> <br>
+                <label for="input_email">Email:</label> <br>
+                <input type="email" id="input_email">
+            </div>
+            <div class="container_button">
+                <form class="btn_bottom" action="../index.html">
+                    <button type="submit" class="button" id="btn_back">Back</button>
+                </form>
+                <button type="button" class="button btn_bottom" onclick="register()">Register</button>
+            </div>
+        </div>
     </body>
 </html>

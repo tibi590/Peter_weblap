@@ -8,6 +8,19 @@
         <script src="../main.js"></script>
     </head>
     <body>
-        <h1>SEX LOGIN</h1>
+        <div class="welcome_frame">
+            <div class="container_login">
+                <label for="input_name">Username:</label> <br>
+                <input type="text" text="username" id="input_name"> <br>
+                <label for="input_pass">Password:</label> <br>
+                <input type="password" text="password" id="input_pass"> <br>
+            </div>
+            <div class="container_button">
+                <form class="btn_bottom" action="../index.html">
+                    <button type="submit" class="button" id="btn_back">Back</button>
+                </form>
+                <button type="button" class="button btn_bottom" onclick="login()">Login</button>
+            </div>
+        </div>
     </body>
 </html>

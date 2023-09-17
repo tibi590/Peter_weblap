@@ -4,6 +4,31 @@ html, body {
 
 body {
     background-color: rgb(75, 75, 75);
+    color: rgb(230, 230, 230);
+    font-size: 18px;
+}
+
+input {
+    width: 50%;
+    height: 18px;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 100%;
+}
+
+.container_login {
+    margin: 10px;
+    min-height: 90%;
+}
+
+.container_button {
+    width: 100%;
+    height: 6.5%;
+    background-color: rgb(25, 25, 25);
+    display: flex;
+    justify-content: center;
 }
 
 .welcome_frame {
@@ -16,10 +41,6 @@ body {
 }
 
 .button {
-    width: 90%;
-    height: 20%;
-    margin-left: 5%;
-    margin-top: 30%;
     background-color: rgb(50, 125, 200);
     border-color: rgb(25, 25, 25);
     border-style: solid;
@@ -30,11 +51,28 @@ body {
     transition: ease-in 0.1s;
 }
 
+.button:hover {
+    background-color: rgb(50, 75, 125);
+}
+
+.btn_middle {
+    width: 90%;
+    height: 20%;
+    margin-left: 5%;
+    margin-top: 30%;
+}
+
+.btn_bottom {
+    width: 50%;
+    height: 100%;
+}
+
 .btn_form {
     width: 100%;
     height: 50%;
 }
 
-.button:hover {
-    background-color: rgb(50, 75, 125);
+#btn_back {
+    width: 100%;
+    height: 100%;
 }
