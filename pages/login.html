@@ -9,18 +9,16 @@
     </head>
     <body>
         <div class="welcome_frame">
-            <div class="container_login">
+            <form action="../php/login.php" method="post">
                 <label for="input_name">Username:</label> <br>
-                <input type="text" text="username" id="input_name"> <br>
+                <input type="text" text="username" id="input_name" name="input_name"> <br>
                 <label for="input_pass">Password:</label> <br>
-                <input type="password" text="password" id="input_pass"> <br>
-            </div>
-            <div class="container_button">
-                <form class="btn_bottom" action="../index.html">
-                    <button type="submit" class="button" id="btn_back">Back</button>
-                </form>
-                <button type="button" class="button btn_bottom" onclick="login()">Login</button>
-            </div>
+                <input type="password" text="password" id="input_pass" name="input_pass"> <br>
+                <div class="btn_frame">
+                    <button type="submit" name="back" class="button btn_bottom">Back</button>
+                    <button type="submit" name="login" class="button btn_bottom">Login</button>
+                </div>
+            </form>
         </div>
     </body>
 </html>
