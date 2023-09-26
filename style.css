@@ -6,7 +6,11 @@ body {
     background-color: rgb(75, 75, 75);
     color: rgb(230, 230, 230);
     font-size: 18px;
+    display: flex;
+    justify-content: center;
 }
+
+123
 
 input {
     width: 50%;
@@ -38,7 +42,6 @@ form {
     width: 20%;
     height: 60%;
     background-color: rgb(50, 50, 50);
-    margin-left: 37%;
     margin-top: 10%;
 }
 
@@ -79,4 +82,6 @@ form {
 
 .btn_bottom {
     width: 50%;
+    height: 100%;
+    margin: 0;
 }
