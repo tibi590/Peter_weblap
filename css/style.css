@@ -10,8 +10,6 @@ body {
     justify-content: center;
 }
 
-123
-
 input {
     width: 50%;
     height: 18px;
@@ -22,6 +20,15 @@ form {
     width: 100%;
     height: 100%;
     position: relative;
+}
+
+.error {
+    width: 95%;
+    background-color: rgb(255, 200, 200);
+    color: rgb(255, 50, 50);
+    border: 2px solid rgb(255, 50, 50);
+    border-radius: 5%;
+    padding: 2px;
 }
 
 .container_login {

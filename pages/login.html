@@ -14,6 +14,10 @@
                 <input type="text" text="username" id="input_name" name="input_name"> <br>
                 <label for="input_pass">Password:</label> <br>
                 <input type="password" text="password" id="input_pass" name="input_pass"> <br>
+                {{if .}}
+                    <p class="error">{{.}}</p>
+                {{else}}
+                {{end}}
 
                 <div class="btn_frame">
                     <input type="button" class="button btn_bottom" value="Back" onclick="history.back()">

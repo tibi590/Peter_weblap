@@ -9,13 +9,17 @@
     </head>
     <body>
         <div class="welcome_frame">
-            <form action="../register" method="post">
+            <form action="/db_register" method="post">
                 <label for="input_name">Username:</label> <br>
                 <input type="text" text="username" id="input_name" name="input_name"> <br>
                 <label for="input_pass">Password:</label> <br>
                 <input type="password" text="password" id="input_pass" name="input_pass"> <br>
                 <label for="input_pass_confirm">Confirm password:</label> <br>
                 <input type="password" text="confirm password" id="input_pass_confirm" name="input_pass_confirm"> <br>
+                {{if .}}
+                    <p class="error">{{.}}</p>
+                {{else}}
+                {{end}}
 
                 <div class="btn_frame">
                     <input type="button" class="button btn_bottom" value="Back" onclick="history.back()">

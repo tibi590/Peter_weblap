@@ -1,0 +1,9 @@
+html, body {
+    height: 99%;
+}
+
+body {
+    background-color: rgb(75, 75, 75);
+    color: rgb(230, 230, 230);
+    font-size: 18px;
+}
