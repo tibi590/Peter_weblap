@@ -1,10 +1,12 @@
 package main
 
 import (
+	"database/sql"
+	"errors"
 	"fmt"
 	"html/template"
 	"net/http"
-	"database/sql"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -29,11 +31,9 @@ func loginPage(res http.ResponseWriter, req *http.Request) {
 }
 
 func login(res http.ResponseWriter, req *http.Request) {
-    fmt.Println("####Login####")
-
     if req.Method != "POST" {
         fmt.Println("ERROR: Not Post Request")
-        http.ServeFile(res, req, ".pages/login.html")
+        ftp.ExecuteTemplate(res, "login.html", nil)
     }
 
     username := req.FormValue("input_name")
@@ -61,6 +61,59 @@ func login(res http.ResponseWriter, req *http.Request) {
         ftp.ExecuteTemplate(res, "login.html", Db_error)
         return
     }
+
+    user := User{
+        Id: db_id,
+        Username: db_user,
+        Password: db_pass,
+    }
+
+    cookie := http.Cookie{
+        Name: "userID",
+        Value: db_id,
+        Path: "/home",
+        MaxAge: 3600,
+        HttpOnly: true,
+        Secure: true,
+    }
+
+    http.SetCookie(res, &cookie)
+
+    println("SUCCES: Cookie Succesfully Created")
+
+    fmt.Println("SUCCES: Redirecting To Home Page")
+    ftp.ExecuteTemplate(res, "home.html", user)
+}
+
+func home(res http.ResponseWriter, req *http.Request) {
+    fmt.Println("####Login####")
+
+    cookie, err := req.Cookie("userID")
+    if err != nil {
+        switch {
+        case errors.Is(err, http.ErrNoCookie):
+            login(res, req)
+        default:
+            println("ERROR: Unable To Read Cookies")
+        }
+        return
+    }
+
+    var db_id string
+    var db_user string
+    var db_pass string
+
+    err = db.QueryRow("SELECT * FROM users WHERE id=?", cookie.Value).Scan(&db_id, &db_user, &db_pass)
+    if err != nil {
+        fmt.Println("ERROR: User Not Found")
+        var Db_error = "Incorrect username"
+        ftp.ExecuteTemplate(res, "login.html", Db_error)
+        return
+    }
+
+    println(db_id)
+    println(db_user)
+    println(db_pass)
 
     user := User{
         Id: db_id,
@@ -146,7 +199,7 @@ func main() {
     http.HandleFunc("/", indexPage)
     http.HandleFunc("/login", loginPage)
     http.HandleFunc("/register", registerPage)
-    http.HandleFunc("/db_login", login)
+    http.HandleFunc("/home", home)
     http.HandleFunc("/db_register", register)
 
     http.Handle("/css/", http.StripPrefix("/css", css_files))
