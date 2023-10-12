@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+    "encoding/json"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -83,6 +84,7 @@ func login(res http.ResponseWriter, req *http.Request) {
 
     fmt.Println("SUCCES: Redirecting To Home Page")
     ftp.ExecuteTemplate(res, "home.html", user)
+    http.Redirect(res, req, "localhost:8080/home", 200)
 }
 
 func home(res http.ResponseWriter, req *http.Request) {
@@ -106,8 +108,12 @@ func home(res http.ResponseWriter, req *http.Request) {
     err = db.QueryRow("SELECT * FROM users WHERE id=?", cookie.Value).Scan(&db_id, &db_user, &db_pass)
     if err != nil {
         fmt.Println("ERROR: User Not Found")
+        res.Header().Set("Content-Type", "application/json")
+
         var Db_error = "Incorrect username"
-        ftp.ExecuteTemplate(res, "login.html", Db_error)
+        json.NewEncoder(res).Encode(Db_error)
+
+        http.Redirect(res, req, "localhost:8080/login", 200)
         return
     }
 
