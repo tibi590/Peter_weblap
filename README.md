@@ -1,3 +1,9 @@
 # Peter_weblap
 
-<p>valami dolog</p>
+<p>szexiszex</p>
+
+<p>{Admin login:}</p>
+
+<p>Username: fasz</p>
+
+<p>Password: pina</p>
