@@ -188,7 +188,7 @@ func main() {
     css_files := http.FileServer(http.Dir("./css"))
     js_files := http.FileServer(http.Dir("./js"))
 
-    db, err = sql.Open("mysql", "admin:admin@/peter")
+    db, err = sql.Open("mysql", "root:@/peter")
     if err != nil {
         fmt.Println("ERROR: Unable To Connect To Database")
         panic(err.Error())
