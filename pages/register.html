@@ -8,22 +8,23 @@
         <script src="/js/main.js"></script>
     </head>
     <body>
-        <div class="welcome_frame">
+        <div class="outer_container">
             <form action="/db_register" method="post">
-                <label for="input_name">Username:</label> <br>
-                <input type="text" text="username" id="input_name" name="input_name"> <br>
-                <label for="input_pass">Password:</label> <br>
-                <input type="password" text="password" id="input_pass" name="input_pass"> <br>
-                <label for="input_pass_confirm">Confirm password:</label> <br>
-                <input type="password" text="confirm password" id="input_pass_confirm" name="input_pass_confirm"> <br>
-                {{if .}}
-                    <p class="error">{{.}}</p>
-                {{else}}
-                {{end}}
-
-                <div class="btn_frame">
-                    <input type="button" class="button btn_bottom" value="Back" onclick="history.back()">
-                    <input type="submit" class="button btn_bottom" value="Register" name="register">
+                <div class="field_container">
+                    <label for="username">Username:</label><br>
+                    <input class="input_field" type="text" name="username"><br>
+                    <label for="password">Password</label><br>
+                    <input class="input_field" type="password" name="password"><br>
+                    <label for="password_confirm">Password Confirmation</label><br>
+                    <input class="input_field" type="password" name="password_confirm">
+                    {{if .}}
+                        <p class="error">{{.}}</p>
+                    {{else}}
+                    {{end}}
+                </div>
+                <div class="button_container_horizontal">
+                    <input class="button horizontal" type="button" name="back" value="Back" onclick="window.location.href='http://localhost:8080/';">
+                    <input class="button horizontal" type="submit" name="submit" value="Register">
                 </div>
             </form>
         </div>

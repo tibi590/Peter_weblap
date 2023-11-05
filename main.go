@@ -84,17 +84,18 @@ func login(res http.ResponseWriter, req *http.Request) {
 
     fmt.Println("SUCCES: Redirecting To Home Page")
     ftp.ExecuteTemplate(res, "home.html", user)
-    http.Redirect(res, req, "localhost:8080/home", 200)
+    // http.Redirect(res, req, "localhost:8080/home", 200)
 }
 
 func home(res http.ResponseWriter, req *http.Request) {
-    fmt.Println("####Login####")
+    fmt.Println("####Home####")
 
     cookie, err := req.Cookie("userID")
     if err != nil {
         switch {
         case errors.Is(err, http.ErrNoCookie):
             login(res, req)
+            // http.Redirect(res, req, "localhost:8080/login", http.StatusSeeOther)
         default:
             println("ERROR: Unable To Read Cookies")
         }
@@ -188,7 +189,8 @@ func main() {
     css_files := http.FileServer(http.Dir("./css"))
     js_files := http.FileServer(http.Dir("./js"))
 
-    db, err = sql.Open("mysql", "root:@/peter")
+    // db, err = sql.Open("mysql", "root:@/peter")
+    db, err = sql.Open("mysql", "admin:admin@/peter")
     if err != nil {
         fmt.Println("ERROR: Unable To Connect To Database")
         panic(err.Error())

@@ -8,20 +8,22 @@
         <script src="/js/main.js"></script>
     </head>
     <body>
-        <div class="welcome_frame">
+        <div class="outer_container">
             <form action="/home" method="post">
-                <label for="input_name">Username:</label> <br>
-                <input type="text" text="username" id="input_name" name="input_name"> <br>
-                <label for="input_pass">Password:</label> <br>
-                <input type="password" text="password" id="input_pass" name="input_pass"> <br>
-                {{if .}}
-                    <p class="error">{{.}}</p>
-                {{else}}
-                {{end}}
+                <div class="field_container">
+                    <label for="input_name">Username:</label><br>
+                    <input class="input_field" type="text" text="username" id="input_name" name="input_name"><br>
+                    <label for="input_pass">Password:</label><br>
+                    <input class="input_field" type="password" text="password" id="input_pass" name="input_pass"><br>
+                    {{if .}}
+                        <p class="error">{{.}}</p>
+                    {{else}}
+                    {{end}}
+                </div>
 
-                <div class="btn_frame">
-                    <input type="button" class="button btn_bottom" value="Back" onclick="history.back()">
-                    <input type="submit" class="button btn_bottom" value="Login" name="login">
+                <div class="button_container_horizontal">
+                    <input class="button horizontal" type="button" name="back" value="Back" onclick="window.location.href='http://localhost:8080/';">
+                    <input type="submit" class="button horizontal" value="Login" name="login">
                 </div>
             </form>
         </div>
